@@ -16,7 +16,7 @@
  * Plugin Name:       PRH Adobe Tag Manager Plugin
  * Plugin URI:        http://goodmanfox.com/
  * Description:       This is a plugin to add the Adobe Tag Manager code to a PRH website.
- * Version:           1.5.0
+ * Version:           1.5.1
  * Author:            Goodman Fox
  * Author URI:        http://goodmanfox.com/
  * License:           GPL-2.0+
@@ -118,6 +118,15 @@ if ( get_option( 'atm-option' ) == 1 ) {
         print "<!-- ATM Production Script --> \n";
         print "<script type='text/javascript' src='https://assets.adobedtm.com/728c4c54f9d7c89d573d84820d40aaef5cb67c98/satelliteLib-26267774f1eecea71ea9e50d9337d164a04c3086.js'></script> \n";
         print "<!-- End: ATM Production Script --> \n";
+
+    }
+
+    add_action( 'wp_footer', 'atm_script_header_footer' );
+    function atm_script_header_footer() {
+        print "<!-- ATM Production Script --> \n";
+        print "<script type='text/javascript'>_satellite.pageBottom();</script> \n";
+        print "<!-- End: ATM Production Script --> \n";
+               
     }
     
 } else {
@@ -129,6 +138,15 @@ if ( get_option( 'atm-option' ) == 1 ) {
         print "<!-- ATM Staging Script --> \n";
         print "<script type='text/javascript' src='https://assets.adobedtm.com/728c4c54f9d7c89d573d84820d40aaef5cb67c98/satelliteLib-26267774f1eecea71ea9e50d9337d164a04c3086-staging.js?ver=1.0.0'></script> \n";
         print "<!-- End: ATM Staging Script --> \n";
+
+    }
+
+    add_action( 'wp_footer', 'atm_script_header_footer' );
+    function atm_script_header_footer() {
+        print "<!-- ATM Production Script --> \n";
+        print "<script type='text/javascript'>_satellite.pageBottom();</script> \n";
+        print "<!-- End: ATM Production Script --> \n";
+      
     }
     
 }
